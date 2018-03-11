@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>自定义成绩录入</h1>
+    <form method="post">
+        {% csrf_token %}
+        <table border="1">
+        {% for row in data %}
+            <tr>
+                <td>{{ row.obj.course_record }}</td>
+                <td>{{ row.obj.student }}</td>
+                <td>{{ row.obj.get_record_display }}</td>
+                {% for field in row.form %}
+                    <td>
+                        {{ field }}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+
+    </table>
+        <input type="submit" value="保存">
+    </form>
+</body>
+</html>

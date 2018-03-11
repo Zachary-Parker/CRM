@@ -1,0 +1,31 @@
+{% extends 'stark/layout.html' %}
+
+{% block body %}
+    <h1>公共资源</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>QQ</th>
+                <th>姓名</th>
+                <th>抢单</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in customer_list %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.qq }}</td>
+                <td>{{ row.name }}</td>
+                <td>
+                    {% if row.consultant_id == current_user_id %}
+                        <a>无权</a>
+                    {% else %}
+                        <a href="/stark/crm/customer/{{ row.id }}/competition/">抢单</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

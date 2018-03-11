@@ -1,0 +1,21 @@
+{% extends 'stark/layout.html' %}
+
+{% block body %}
+    <h1>我的客户</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>QQ</td>
+                <td>姓名</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in customers %}
+                <tr>
+                    <td>{{ row.customer.qq }}</td>
+                    <td>{{ row.customer.name }}</td>
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
